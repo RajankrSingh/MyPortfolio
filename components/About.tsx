@@ -139,14 +139,7 @@ export default function About() {
           >
             About Me
           </Typography>
-          <Typography
-            variant="body1"
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
-          >
-            A passionate web developer with 4 years of experience creating digital solutions
-            that make a difference. I specialize in building responsive, performant, and
-            user-friendly web applications.
-          </Typography>
+
         </motion.div>
 
         {/* Profile Card */}
@@ -212,7 +205,7 @@ export default function About() {
                   </Box>
                   <Box className="flex items-center gap-2 text-gray-600">
                     <Email className="text-sm" />
-                    <Typography variant="body2">your.email@example.com</Typography>
+                    <Typography variant="body2">rajanksingh2009@gmail.com</Typography>
                   </Box>
                 </Box>
               </Grid>

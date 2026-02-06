@@ -91,12 +91,7 @@ export default function Skills() {
           >
             Skills
           </Typography>
-          <Typography
-            variant="body1"
-            className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-16"
-          >
-            Technologies and tools I use to bring ideas to life
-          </Typography>
+          
         </motion.div>
 
         <motion.div

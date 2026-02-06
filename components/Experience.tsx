@@ -130,12 +130,7 @@ export default function Experience() {
           >
             Professional Experience
           </Typography>
-          <Typography
-            variant="body1"
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            My journey through the tech industry, building impactful solutions and growing as a developer
-          </Typography>
+          
         </motion.div>
 
         <motion.div
