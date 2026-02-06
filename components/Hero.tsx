@@ -212,17 +212,6 @@ export default function Hero() {
             </Box>
           </motion.div>
 
-          {/* Description */}
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="body1"
-              className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed"
-            >
-              I build modern, scalable web applications that solve real-world problems
-              and deliver exceptional user experiences. Passionate about clean code,
-              performance, and creating digital solutions that matter.
-            </Typography>
-          </motion.div>
 
           {/* Tech Stack Badges */}
           <motion.div

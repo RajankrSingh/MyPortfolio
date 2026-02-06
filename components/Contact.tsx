@@ -175,13 +175,7 @@ export default function Contact() {
           >
             Let&apos;s Work Together
           </Typography>
-          <Typography
-            variant="body1"
-            className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-4"
-          >
-            Have a project in mind? I&apos;d love to hear from you. Send me a
-            message and I&apos;ll respond as soon as possible.
-          </Typography>
+         
           <Box className="flex items-center justify-center gap-2 mt-4">
             <Chip
               icon={<CheckCircle className="text-green-500" />}

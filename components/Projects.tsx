@@ -192,12 +192,7 @@ export default function Projects() {
           >
             Featured Projects
           </Typography>
-          <Typography
-            variant="body1"
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            A collection of projects showcasing my skills in web development, from full-stack applications to frontend interfaces
-          </Typography>
+          
         </motion.div>
 
         {/* Category Filter */}

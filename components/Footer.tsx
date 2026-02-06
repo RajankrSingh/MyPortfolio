@@ -7,7 +7,7 @@ export default function Footer() {
   const socialLinks = [
     { icon: LinkedIn, href: 'https://linkedin.com/in/yourprofile', label: 'LinkedIn' },
     { icon: GitHub, href: 'https://github.com/yourusername', label: 'GitHub' },
-    { icon: Email, href: 'mailto:your.email@example.com', label: 'Email' },
+    { icon: Email, href: 'mailto:rajanksingh2009@gmail.com', label: 'Email' },
   ]
 
   return (
