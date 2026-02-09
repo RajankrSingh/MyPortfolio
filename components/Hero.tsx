@@ -33,7 +33,7 @@ export default function Hero() {
       setCurrentRole((prev) => (prev + 1) % roles.length)
     }, 3000)
     return () => clearInterval(interval)
-  }, [])
+  }, [roles.length])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)

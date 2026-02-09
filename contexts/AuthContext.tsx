@@ -113,24 +113,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
         
         if (existingProfile) {
-          // Update existing profile
+          // Update existing profile (type assertion: client has no generated DB types)
           const { error: updateError } = await supabase
             .from('profiles')
-            .update(profileData)
+            .update(profileData as never)
             .eq('id', data.user.id)
           
           if (updateError) {
             console.error('Error updating profile:', updateError)
           }
         } else {
-          // Create new profile if it doesn't exist
+          // Create new profile if it doesn't exist (type assertion: client has no generated DB types)
           const { error: insertError } = await supabase
             .from('profiles')
             .insert({
               id: data.user.id,
               full_name: userData.full_name,
               phone: userData.phone,
-            })
+            } as never)
           
           if (insertError) {
             console.error('Error creating profile:', insertError)
@@ -156,7 +156,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     const { error } = await supabase
       .from('profiles')
-      .update(updates)
+      .update(updates as never)
       .eq('id', user.id)
 
     if (!error) {
