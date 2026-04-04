@@ -6,6 +6,8 @@ import { ArrowDownward, Download, Code, TrendingUp, Star } from '@mui/icons-mate
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
+const HERO_ROLES = ['Web Developer', 'Frontend Specialist', 'React Expert', 'Next.js Developer'] as const
+
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [currentRole, setCurrentRole] = useState(0)
@@ -14,7 +16,6 @@ export default function Hero() {
     threshold: 0.1,
   })
 
-  const roles = ['Web Developer', 'Frontend Specialist', 'React Expert', 'Next.js Developer']
   const techStack = ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js']
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length)
+      setCurrentRole((prev) => (prev + 1) % HERO_ROLES.length)
     }, 3000)
     return () => clearInterval(interval)
   }, [])
@@ -217,7 +218,7 @@ export default function Hero() {
                     className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-gray-700 font-semibold leading-snug md:leading-tight text-center"
                     component="h2"
                   >
-                    {roles[currentRole]}
+                    {HERO_ROLES[currentRole]}
                   </Typography>
                 </motion.div>
               </AnimatePresence>

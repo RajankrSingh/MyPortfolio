@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 import { User, Session, AuthError } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase-client'
+import type { ProfileUpdate } from '@/lib/database.types'
 
 interface AuthContextType {
   user: User | null
@@ -10,7 +11,7 @@ interface AuthContextType {
   loading: boolean
   signIn: (email: string, password: string, userData?: { full_name?: string; phone?: string }) => Promise<{ error: AuthError | null }>
   signOut: () => Promise<void>
-  updateProfile: (updates: { full_name?: string; avatar_url?: string; phone?: string }) => Promise<{ error: any }>
+  updateProfile: (updates: ProfileUpdate) => Promise<{ error: unknown }>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -107,9 +108,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .eq('id', data.user.id)
           .single()
         
-        const profileData: { full_name?: string; phone?: string } = {
-          full_name: userData.full_name,
-          phone: userData.phone,
+        const profileData: ProfileUpdate = {
+          full_name: userData.full_name ?? null,
+          phone: userData.phone ?? null,
         }
         
         if (existingProfile) {
@@ -150,7 +151,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await supabase.auth.signOut()
   }
 
-  const updateProfile = async (updates: { full_name?: string; avatar_url?: string; phone?: string }) => {
+  const updateProfile = async (updates: ProfileUpdate) => {
     if (!supabase || !user) {
       return { error: { message: 'Supabase is not configured or user is not logged in.' } }
     }

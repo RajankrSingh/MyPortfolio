@@ -1,8 +1,9 @@
 'use client'
 
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'
+import { createClient as createSupabaseClient, type SupabaseClient } from '@supabase/supabase-js'
+import type { Database } from '@/lib/database.types'
 
-let supabaseClient: ReturnType<typeof createSupabaseClient> | null = null
+let supabaseClient: SupabaseClient<Database> | null = null
 
 export function createClient() {
   if (supabaseClient) {
@@ -16,14 +17,14 @@ export function createClient() {
   if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('Supabase environment variables not set. Authentication will not work.')
     // Return a mock client that won't crash the app
-    supabaseClient = createSupabaseClient(
+    supabaseClient = createSupabaseClient<Database>(
       'https://placeholder.supabase.co',
       'placeholder-key'
     )
     return supabaseClient
   }
 
-  supabaseClient = createSupabaseClient(supabaseUrl, supabaseAnonKey)
+  supabaseClient = createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey)
   return supabaseClient
 }
 
