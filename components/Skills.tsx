@@ -37,9 +37,8 @@ export default function Skills() {
       title: 'Backend',
       skills: [
         { name: 'REST APIs', level: 85 },
-        { name: 'Supabase', level: 80 },
-        // { name: 'Firebase', level: 75 },
-        // { name: 'Node.js', level: 70 },
+        { name: 'Node.js', level: 75 },
+        { name: 'PostgreSQL', level: 70 },
       ],
     },
     {

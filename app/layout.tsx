@@ -4,7 +4,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { AuthProvider } from '@/contexts/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,12 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <SpeedInsights />
-        </AuthProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <SpeedInsights />
       </body>
     </html>
   )

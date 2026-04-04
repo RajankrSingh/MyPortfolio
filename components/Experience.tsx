@@ -22,7 +22,7 @@ const experiences: ExperienceItem[] = [
     role: 'Senior Web Developer',
     period: 'June 2022 - Present',
     location: 'Remote',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Supabase'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL'],
     contributions: [
       'Led development of multiple client projects using React and Next.js',
       'Improved application performance by 40% through code optimization',
