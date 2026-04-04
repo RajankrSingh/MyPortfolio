@@ -42,6 +42,16 @@ export default function Hero() {
     }
   }
 
+  const downloadResume = () => {
+    const a = document.createElement('a')
+    a.href = '/Rajan_Resume_2026.pdf'
+    a.download = 'Rajan_Resume_2026.pdf'
+    a.rel = 'noopener'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -166,32 +176,33 @@ export default function Hero() {
             </Typography>
           </motion.div>
 
-          {/* Name */}
-          <motion.div variants={itemVariants}>
+          {/* Name — padding reserves space for the gradient bar so it never collides with the role line */}
+          <motion.div variants={itemVariants} className="mb-4 md:mb-6">
             <Typography
               variant="h1"
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 relative"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 relative leading-tight md:leading-none tracking-tight px-1"
               component="h1"
             >
               <motion.span
-                className="text-primary-600 inline-block relative"
+                className="text-primary-600 inline-block relative w-fit max-w-full pb-3 md:pb-4"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                Rajan Kumar
+                <span className="block text-center">Rajan Kumar</span>
                 <motion.span
-                  className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-400 via-purple-500 to-primary-600 rounded-full"
+                  className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-400 via-purple-500 to-primary-600 rounded-full origin-left"
                   initial={{ scaleX: 0 }}
                   animate={inView ? { scaleX: 1 } : {}}
                   transition={{ duration: 0.8, delay: 0.8 }}
+                  aria-hidden
                 />
               </motion.span>
             </Typography>
           </motion.div>
 
-          {/* Animated Role */}
+          {/* Animated Role — min-height so wrapped titles never clip or overlap adjacent blocks */}
           <motion.div variants={itemVariants}>
-            <Box className="h-16 md:h-20 mb-4 flex items-center justify-center">
+            <Box className="min-h-[4.5rem] sm:min-h-[5rem] md:min-h-20 mb-4 flex items-center justify-center px-2 py-2">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentRole}
@@ -199,10 +210,11 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
+                  className="max-w-full"
                 >
                   <Typography
                     variant="h2"
-                    className="text-2xl md:text-4xl lg:text-5xl text-gray-700 font-semibold"
+                    className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-gray-700 font-semibold leading-snug md:leading-tight text-center"
                     component="h2"
                   >
                     {roles[currentRole]}
@@ -311,10 +323,7 @@ export default function Hero() {
                   variant="outlined"
                   size="large"
                   startIcon={<Download />}
-                  onClick={() => {
-                    // You can add download resume functionality here
-                    window.open('/resume.pdf', '_blank')
-                  }}
+                  onClick={downloadResume}
                   sx={{
                     textTransform: 'none',
                     fontSize: '1.1rem',
