@@ -1,12 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Avatar, Menu as MuiMenu, MenuItem, Typography } from '@mui/material'
-import { Menu as MenuIcon, AccountCircle, Logout } from '@mui/icons-material'
+import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import { Menu as MenuIcon } from '@mui/icons-material'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useAuth } from '@/contexts/AuthContext'
-import AuthModal from './AuthModal'
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -18,20 +16,16 @@ const navItems = [
 ]
 
 export default function Navbar() {
-  const { user, signOut, loading } = useAuth()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const [authModalOpen, setAuthModalOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
-      
-      // Update active section based on scroll position
-      const sections = navItems.map(item => item.href.substring(1))
-      const current = sections.find(section => {
+
+      const sections = navItems.map((item) => item.href.substring(1))
+      const current = sections.find((section) => {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
@@ -56,19 +50,6 @@ export default function Navbar() {
       element.scrollIntoView({ behavior: 'smooth' })
       setMobileOpen(false)
     }
-  }
-
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleMenuClose = () => {
-    setAnchorEl(null)
-  }
-
-  const handleSignOut = async () => {
-    await signOut()
-    handleMenuClose()
   }
 
   const drawer = (
@@ -108,10 +89,7 @@ export default function Navbar() {
     >
       <Toolbar className="max-w-7xl mx-auto w-full px-4">
         <Box className="flex-1">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="#home"
               onClick={() => scrollToSection('#home')}
@@ -158,67 +136,13 @@ export default function Navbar() {
             </motion.div>
           ))}
         </Box>
-        <Box className="flex items-center gap-2">
-          {!loading && (
-            <>
-              {user ? (
-                <>
-                  <IconButton
-                    onClick={handleMenuOpen}
-                    size="small"
-                    className="text-gray-700"
-                  >
-                    <Avatar sx={{ width: 32, height: 32, bgcolor: '#0ea5e9' }}>
-                      {user.email?.charAt(0).toUpperCase()}
-                    </Avatar>
-                  </IconButton>
-                  <MuiMenu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleMenuClose}
-                    PaperProps={{
-                      sx: {
-                        borderRadius: '12px',
-                        mt: 1,
-                        minWidth: 200,
-                      },
-                    }}
-                  >
-                    <MenuItem onClick={handleMenuClose}>
-                      <AccountCircle className="mr-2" />
-                      <Typography variant="body2">{user.email}</Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleSignOut}>
-                      <Logout className="mr-2" />
-                      <Typography variant="body2">Sign Out</Typography>
-                    </MenuItem>
-                  </MuiMenu>
-                </>
-              ) : (
-                <Button
-                  variant="contained"
-                  size="small"
-                  onClick={() => setAuthModalOpen(true)}
-                  sx={{
-                    textTransform: 'none',
-                    borderRadius: '12px',
-                    background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)',
-                    '&:hover': {
-                      background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
-                    },
-                  }}
-                >
-                  Login
-                </Button>
-              )}
-            </>
-          )}
+        <Box className="flex items-center md:hidden">
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            className="md:hidden text-gray-900"
+            className="text-gray-900"
             component={motion.button}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -241,7 +165,6 @@ export default function Navbar() {
       >
         {drawer}
       </Drawer>
-      <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </AppBar>
   )
 }
