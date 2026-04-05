@@ -22,19 +22,21 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with user authentication, product management, shopping cart, and payment integration.',
-    longDescription: 'Built a comprehensive e-commerce platform from scratch with advanced features including real-time inventory management, multi-payment gateway integration, and admin dashboard. Implemented secure authentication, order tracking, and customer reviews.',
-    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Stripe'],
-    liveLink: 'https://example.com',
-    githubLink: 'https://github.com/example',
-    category: 'fullstack',
+    name: 'CorpSphere Consultancy',
+    description:
+      'Corporate marketing site for CorpSphere Consultancy — payroll, bookkeeping, Zoho, website design, DSC, and labor law services with clear service sections and CTAs.',
+    longDescription:
+      'Built the public-facing website for CorpSphere Consultancy to present their back-office and digital offerings: payroll and compliance, bookkeeping and GST, Zoho suite positioning, website design, DSC services, and labor law consultancy. Focused on readable service breakdowns, testimonials, and conversion-oriented layout.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    liveLink: 'https://corpsphere.in/',
+    githubLink: 'https://github.com/RajankrSingh/gov-data',
+    category: 'frontend',
     featured: true,
     status: 'completed',
-    highlights: ['40% performance improvement', '1000+ active users', '99.9% uptime'],
+    highlights: ['Multi-service landing & navigation', 'SEO-minded structure', 'Testimonials & trust sections'],
   },
   {
-    name: 'School Students Data Management Platform',
+    name: 'Data Management Platform',
     description: 'A comprehensive platform for managing student data with separate login portals for distributors and schools. Features secure authentication, data management, and dashboard access.',
     longDescription: 'Developed a full-stack student data management system with role-based access control. Includes distributor dashboard for file and data management, and school dashboard for viewing and managing student information. Built with modern technologies for scalability and security.',
     techStack: ['Next.js 14', 'React 18', 'PostgreSQL', 'Tailwind CSS'],
